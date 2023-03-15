@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, NavLink } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage';
 import { BlogPage } from './pages/BlogPage';
@@ -11,9 +11,9 @@ function App() {
   return (
     <>
       <header>
-        <Link to="/">Home</Link>
-        <Link to="/posts">Blog</Link>
-        <Link to="/about">About</Link>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/posts">Blog</NavLink>
+        <NavLink to="/about">About</NavLink>
       </header>
       <Routes>
         <Route path="/" element={<HomePage />} />
