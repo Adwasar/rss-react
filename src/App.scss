@@ -5,20 +5,40 @@
   font-family: 'Inter', sans-serif;
 }
 
+.active {
+  text-decoration: underline;
+}
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
 header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: gray;
+  background-color: rgb(9, 7, 19);
   height: 60px;
 
   a {
     margin: 10px 25px;
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
   }
 }
 
-.active {
-  text-decoration: underline;
+.filter-board {
+  height: 80px;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper {
+  display: flex;
+  margin-left: auto;
+  background-color: rgb(231, 231, 231);
+  height: 40px;
+  width: 150px;
 }
