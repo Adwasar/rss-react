@@ -5,6 +5,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+body {
+  background-color: #fcfced;
+}
+
 .active {
   text-decoration: underline;
 }
@@ -41,4 +45,11 @@ header {
   background-color: rgb(231, 231, 231);
   height: 40px;
   width: 150px;
+}
+
+.cards {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
 }

@@ -1,3 +1,6 @@
+import { Card } from '../components/Card';
+import data from '../components/data';
+
 const HomePage = () => {
   return (
     <>
@@ -10,8 +13,13 @@ const HomePage = () => {
         </div>
       </div>
       <div className="wrapper">
-        <h1>Homepage</h1>
-        <p>Homepage content</p>
+        <div className="cards">
+          {data.map((item, i) => {
+            return (
+              <Card key={i} price={data[i].price} image={data[i].image} title={data[i].title} />
+            );
+          })}
+        </div>
       </div>
     </>
   );
