@@ -1,6 +1,8 @@
+import { CardItem } from '../../types/data-types';
+
 import styles from './Card.module.scss';
 
-const Card = (props) => {
+const Card = (props: CardItem) => {
   return (
     <>
       <div className={styles['card-wrapper']}>
