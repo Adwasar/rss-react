@@ -2,15 +2,16 @@ import { Header } from '../components/header';
 import { Card } from '../components/Card';
 import data from '../components/data';
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <>
-      <Header />
+      <Header title={props.title} />
       <div className={'filter-board'}>
         <div className="wrapper">
           <div className={'search-wrapper'}>
             <input type="text" />
             <button>Search</button>
+            <p></p>
           </div>
         </div>
       </div>
