@@ -1,9 +1,11 @@
+import { Header } from '../components/header';
 import { Card } from '../components/Card';
 import data from '../components/data';
 
 const HomePage = () => {
   return (
     <>
+      <Header />
       <div className={'filter-board'}>
         <div className="wrapper">
           <div className={'search-wrapper'}>

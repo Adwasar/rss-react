@@ -10,26 +10,12 @@ body {
 }
 
 .active {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .wrapper {
   width: 1000px;
   margin: 0 auto;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(9, 7, 19);
-  height: 60px;
-
-  a {
-    margin: 10px 25px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-  }
 }
 
 .filter-board {
