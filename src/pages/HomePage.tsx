@@ -2,7 +2,9 @@ import { Header } from '../components/header';
 import { Card } from '../components/Card';
 import data from '../components/data';
 
-const HomePage = (props) => {
+import { NavTitle } from '../types/data-types';
+
+const HomePage = (props: NavTitle) => {
   return (
     <>
       <Header title={props.title} />

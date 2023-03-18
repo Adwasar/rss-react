@@ -1,6 +1,9 @@
 import { Header } from '../components/header';
 
-const AboutPage = (props) => {
+import { NavTitle } from '../types/data-types';
+
+const AboutPage = (props: NavTitle) => {
+  console.log(props);
   return (
     <>
       <Header title={props.title} />

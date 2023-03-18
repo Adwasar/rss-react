@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styles from './header.module.scss';
 
-export const Header = (props) => {
+import { NavTitle } from '../../types/data-types';
+
+export const Header = (props: NavTitle) => {
   return (
     <header className={styles['head-wrapper']}>
       <div className="wrapper">

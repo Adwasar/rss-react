@@ -1,6 +1,8 @@
 import { Header } from '../components/header';
 
-const NotFoundPage = (props) => {
+import { NavTitle } from '../types/data-types';
+
+const NotFoundPage = (props: NavTitle) => {
   return (
     <>
       <Header title={props.title} />
