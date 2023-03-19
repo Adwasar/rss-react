@@ -1,0 +1,780 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Card component > Cards snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_card-wrapper_d75732"
+      >
+        <div
+          class="_card-image_d75732"
+          style="background-image: url(./img/sneakers/1.png);"
+        />
+        <p
+          class="_card-title_d75732"
+        >
+          Мужские Кроссовки Nike Blazer Mid Suede
+        </p>
+        <span
+          class="_card-cost_d75732"
+        >
+          ЦЕНА:
+        </span>
+        <br />
+        <span
+          class="_card-price_d75732"
+        >
+          6499
+           грн
+        </span>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_card-wrapper_d75732"
+    >
+      <div
+        class="_card-image_d75732"
+        style="background-image: url(./img/sneakers/1.png);"
+      />
+      <p
+        class="_card-title_d75732"
+      >
+        Мужские Кроссовки Nike Blazer Mid Suede
+      </p>
+      <span
+        class="_card-cost_d75732"
+      >
+        ЦЕНА:
+      </span>
+      <br />
+      <span
+        class="_card-price_d75732"
+      >
+        6499
+         грн
+      </span>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Cards > Cards snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_card-wrapper_d75732"
+      >
+        <div
+          class="_card-image_d75732"
+          style="background-image: url(./img/sneakers/1.png);"
+        />
+        <p
+          class="_card-title_d75732"
+        >
+          Мужские Кроссовки Nike Blazer Mid Suede
+        </p>
+        <span
+          class="_card-cost_d75732"
+        >
+          ЦЕНА:
+        </span>
+        <br />
+        <span
+          class="_card-price_d75732"
+        >
+          6499
+           грн
+        </span>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_card-wrapper_d75732"
+    >
+      <div
+        class="_card-image_d75732"
+        style="background-image: url(./img/sneakers/1.png);"
+      />
+      <p
+        class="_card-title_d75732"
+      >
+        Мужские Кроссовки Nike Blazer Mid Suede
+      </p>
+      <span
+        class="_card-cost_d75732"
+      >
+        ЦЕНА:
+      </span>
+      <br />
+      <span
+        class="_card-price_d75732"
+      >
+        6499
+         грн
+      </span>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Cards > Cards snapshot 2`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_card-wrapper_d75732"
+      >
+        <div
+          class="_card-image_d75732"
+          style="background-image: url(./img/sneakers/1.png);"
+        />
+        <p
+          class="_card-title_d75732"
+        >
+          Мужские Кроссовки Nike Blazer Mid Suede
+        </p>
+        <span
+          class="_card-cost_d75732"
+        >
+          ЦЕНА:
+        </span>
+        <br />
+        <span
+          class="_card-price_d75732"
+        >
+          6499
+           грн
+        </span>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_card-wrapper_d75732"
+    >
+      <div
+        class="_card-image_d75732"
+        style="background-image: url(./img/sneakers/1.png);"
+      />
+      <p
+        class="_card-title_d75732"
+      >
+        Мужские Кроссовки Nike Blazer Mid Suede
+      </p>
+      <span
+        class="_card-cost_d75732"
+      >
+        ЦЕНА:
+      </span>
+      <br />
+      <span
+        class="_card-price_d75732"
+      >
+        6499
+         грн
+      </span>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Cards > Cards snapshot 3`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_card-wrapper_d75732"
+      >
+        <div
+          class="_card-image_d75732"
+          style="background-image: url(./img/sneakers/1.png);"
+        />
+        <p
+          class="_card-title_d75732"
+        >
+          Мужские Кроссовки Nike Blazer Mid Suede
+        </p>
+        <span
+          class="_card-cost_d75732"
+        >
+          ЦЕНА:
+        </span>
+        <br />
+        <span
+          class="_card-price_d75732"
+        >
+          6499
+           грн
+        </span>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_card-wrapper_d75732"
+    >
+      <div
+        class="_card-image_d75732"
+        style="background-image: url(./img/sneakers/1.png);"
+      />
+      <p
+        class="_card-title_d75732"
+      >
+        Мужские Кроссовки Nike Blazer Mid Suede
+      </p>
+      <span
+        class="_card-cost_d75732"
+      >
+        ЦЕНА:
+      </span>
+      <br />
+      <span
+        class="_card-price_d75732"
+      >
+        6499
+         грн
+      </span>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Cards > Cards snapshot 4`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_card-wrapper_d75732"
+      >
+        <div
+          class="_card-image_d75732"
+          style="background-image: url(./img/sneakers/1.png);"
+        />
+        <p
+          class="_card-title_d75732"
+        >
+          Мужские Кроссовки Nike Blazer Mid Suede
+        </p>
+        <span
+          class="_card-cost_d75732"
+        >
+          ЦЕНА:
+        </span>
+        <br />
+        <span
+          class="_card-price_d75732"
+        >
+          6499
+           грн
+        </span>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_card-wrapper_d75732"
+    >
+      <div
+        class="_card-image_d75732"
+        style="background-image: url(./img/sneakers/1.png);"
+      />
+      <p
+        class="_card-title_d75732"
+      >
+        Мужские Кроссовки Nike Blazer Mid Suede
+      </p>
+      <span
+        class="_card-cost_d75732"
+      >
+        ЦЕНА:
+      </span>
+      <br />
+      <span
+        class="_card-price_d75732"
+      >
+        6499
+         грн
+      </span>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Cards components > Cards snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_card-wrapper_d75732"
+      >
+        <div
+          class="_card-image_d75732"
+          style="background-image: url(./img/sneakers/1.png);"
+        />
+        <p
+          class="_card-title_d75732"
+        >
+          Мужские Кроссовки Nike Blazer Mid Suede
+        </p>
+        <span
+          class="_card-cost_d75732"
+        >
+          ЦЕНА:
+        </span>
+        <br />
+        <span
+          class="_card-price_d75732"
+        >
+          6499
+           грн
+        </span>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_card-wrapper_d75732"
+    >
+      <div
+        class="_card-image_d75732"
+        style="background-image: url(./img/sneakers/1.png);"
+      />
+      <p
+        class="_card-title_d75732"
+      >
+        Мужские Кроссовки Nike Blazer Mid Suede
+      </p>
+      <span
+        class="_card-cost_d75732"
+      >
+        ЦЕНА:
+      </span>
+      <br />
+      <span
+        class="_card-price_d75732"
+      >
+        6499
+         грн
+      </span>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`FilterBoard component > FilterBoard snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="_filter-board_d2f0e1"
+      >
+        <div
+          class="wrapper"
+        >
+          <div
+            class="_search-wrapper_d2f0e1"
+          >
+            <input
+              class="_search-input_d2f0e1"
+              type="text"
+            />
+            <button>
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="_filter-board_d2f0e1"
+    >
+      <div
+        class="wrapper"
+      >
+        <div
+          class="_search-wrapper_d2f0e1"
+        >
+          <input
+            class="_search-input_d2f0e1"
+            type="text"
+          />
+          <button>
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
