@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       <main>
+        <h1>hello world</h1>
         <Routes>
           <Route path="/" element={<HomePage title="Home" />} />
           <Route path="/about" element={<AboutPage title="About" />} />
