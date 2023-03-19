@@ -1,6 +1,7 @@
-import { Header } from '../components/header';
+import { Header } from '../components/Header';
 import { Card } from '../components/Card';
 import data from '../components/data';
+import FilterBoard from '../components/FilterBoard';
 
 import { NavTitle } from '../types/data-types';
 
@@ -8,15 +9,7 @@ const HomePage = (props: NavTitle) => {
   return (
     <>
       <Header title={props.title} />
-      <div className={'filter-board'}>
-        <div className="wrapper">
-          <div className={'search-wrapper'}>
-            <input type="text" />
-            <button>Search</button>
-            <p></p>
-          </div>
-        </div>
-      </div>
+      <FilterBoard />
       <div className="wrapper">
         <div className="cards">
           {data.map((item, i) => {

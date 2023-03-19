@@ -1,0 +1,18 @@
+.filter-board {
+  height: 80px;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper {
+  display: flex;
+  margin-left: auto;
+  background-color: rgb(231, 231, 231);
+  height: 40px;
+  width: 250px;
+}
+
+.search-input {
+  width: 100%;
+}

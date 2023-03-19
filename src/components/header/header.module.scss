@@ -1,9 +1,7 @@
 .head-wrapper {
   background-color: rgb(9, 7, 19);
   display: flex;
-
   align-items: center;
-
   height: 60px;
 
   .head-content {
@@ -13,7 +11,7 @@
   }
 
   a {
-    margin: 10px 25px;
+    margin-left: 25px;
     color: rgb(255, 255, 255);
     text-decoration: none;
   }
