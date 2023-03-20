@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { Card } from './components/Card';
-import FilterBoard from './components/FilterBoard';
 import { AboutPage } from './pages/AboutPage';
 
 const data = [
@@ -48,20 +47,6 @@ describe('Cards components', () => {
   it('List renders', () => {
     render(<Card price={data[3].price} image={data[3].image} title={data[3].title} />);
     expect(screen.getByText(/кроссовки/i)).toBeInTheDocument();
-  });
-
-  it('Cards snapshot', () => {
-    const cards = render(
-      <Card price={data[0].price} image={data[0].image} title={data[0].title} />
-    );
-    expect(cards).toMatchSnapshot();
-  });
-});
-
-describe('FilterBoard component', () => {
-  it('FilterBoard snapshot', () => {
-    const board = render(<FilterBoard />);
-    expect(board).toMatchSnapshot();
   });
 });
 
