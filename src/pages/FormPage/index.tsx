@@ -7,6 +7,7 @@ import { FormCard } from '../../components/FormCard';
 import { NavTitle, FormState, InputChangeEvent } from '../../types/data-types';
 
 class FormPage extends React.Component<NavTitle, FormState> {
+  fileInputRef = React.createRef();
   state = {
     inputName: '',
     inputSurname: '',
@@ -96,6 +97,11 @@ class FormPage extends React.Component<NavTitle, FormState> {
         },
       ],
     }));
+
+    const fileInput = this.fileInputRef.current as HTMLInputElement;
+    if (fileInput.form) {
+      fileInput.form.reset();
+    }
 
     //сбрасываем значения радиокнопок:
     const genderRadios = document.getElementsByName('gender') as NodeListOf<HTMLInputElement>;
@@ -195,6 +201,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
                 name="img"
                 accept="image/*"
                 onChange={this.handleImgChange}
+                ref={this.fileInputRef as React.RefObject<HTMLInputElement>}
               />
             </label>
 
