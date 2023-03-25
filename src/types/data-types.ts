@@ -11,6 +11,12 @@ export type NavTitle = {
 export type FormState = {
   inputName: string;
   inputSurname: string;
+  cards: FormCard[] | [];
+};
+
+export type FormCard = {
+  name: string;
+  surname: string;
 };
 
 export type InputChangeEvent = {
