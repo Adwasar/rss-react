@@ -11,10 +11,10 @@ class FormPage extends React.Component<NavTitle, FormState> {
     inputName: '',
     inputSurname: '',
     inputDateOfBirth: '',
-    inputRadioGender: '',
+    inputRadioGender: 'Prefer not sey',
+    selectDelivery: 'Self',
     cards: [
-      { name: 'Vlad', surname: 'Bryl', dateOfBirth: '1996-03-16', gender: 'Mr' },
-      { name: 'Artem', surname: 'Mahenko', dateOfBirth: '1993-12-10', gender: 'Mr' },
+      { name: 'Vlad', surname: 'Bryl', dateOfBirth: '1996-03-16', gender: 'Mr', delivery: 'Self' },
     ],
   };
 
@@ -43,26 +43,37 @@ class FormPage extends React.Component<NavTitle, FormState> {
     });
   };
 
+  handleSelectShippingMethod = ({ target: { value } }: InputChangeEvent) => {
+    this.setState({
+      selectDelivery: value,
+    });
+  };
+
   handleCreateAccount = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    this.setState(
-      (prevState) => ({
-        inputName: '',
-        inputSurname: '',
-        inputDateOfBirth: '',
-        inputRadioGender: '',
-        cards: [
-          ...prevState.cards,
-          {
-            name: this.state.inputName,
-            surname: this.state.inputSurname,
-            dateOfBirth: this.state.inputDateOfBirth,
-            gender: this.state.inputRadioGender,
-          },
-        ],
-      }),
-      () => console.log(this.state.cards)
-    );
+    this.setState((prevState) => ({
+      inputName: '',
+      inputSurname: '',
+      inputDateOfBirth: '',
+      inputRadioGender: 'Prefer not sey',
+      selectDelivery: 'Self',
+      cards: [
+        ...prevState.cards,
+        {
+          name: this.state.inputName,
+          surname: this.state.inputSurname,
+          dateOfBirth: this.state.inputDateOfBirth,
+          gender: this.state.inputRadioGender,
+          delivery: this.state.selectDelivery,
+        },
+      ],
+    }));
+
+    //сбрасываем значения радиокнопок:
+    const genderRadios = document.getElementsByName('gender') as NodeListOf<HTMLInputElement>;
+    genderRadios.forEach((radio) => {
+      radio.checked = false;
+    });
   };
 
   render() {
@@ -95,11 +106,12 @@ class FormPage extends React.Component<NavTitle, FormState> {
               id="dateOfBirth"
               className={styles['form-input']}
               onChange={this.handleInputDateOfBirthChange}
+              value={this.state.inputDateOfBirth}
             />
 
             <div>
               Gender:
-              <label htmlFor="genderMr" className={styles['gender-radio']}>
+              <label className={styles['gender-radio']}>
                 <input
                   id="genderMr"
                   type="radio"
@@ -109,7 +121,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
                 />
                 {' Mr'}
               </label>
-              <label htmlFor="genderMs" className={styles['gender-radio']}>
+              <label className={styles['gender-radio']}>
                 <input
                   id="genderMs"
                   type="radio"
@@ -119,7 +131,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
                 />
                 {' Ms'}
               </label>
-              <label htmlFor="genderNo" className={styles['gender-radio']}>
+              <label className={styles['gender-radio']}>
                 <input
                   id="genderNo"
                   type="radio"
@@ -130,6 +142,21 @@ class FormPage extends React.Component<NavTitle, FormState> {
                 {' Prefer not sey'}
               </label>
             </div>
+
+            <label htmlFor="select" className={styles['from-select']}>
+              Shipping method:
+              <br />
+              <select
+                value={this.state.selectDelivery}
+                name="select"
+                id="select"
+                onChange={this.handleSelectShippingMethod}
+              >
+                <option value="Self">Self delivery</option>
+                <option value="Postal">Postal delivery</option>
+                <option value="Courier">Courier delivery</option>
+              </select>
+            </label>
 
             <button className={styles['submitBtn']} onClick={this.handleCreateAccount}>
               Create account
@@ -144,6 +171,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
                 surname={card.surname}
                 dateOfBirth={card.dateOfBirth}
                 gender={card.gender}
+                delivery={card.delivery}
               />
             ))}
           </div>

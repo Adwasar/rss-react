@@ -10,6 +10,7 @@ const FormCard = (props: FormCardType) => {
       <p>Surname: {props.surname}</p>
       <p>Date: {props.dateOfBirth}</p>
       <p>Gender: {props.gender}</p>
+      <p>Shipping method: {props.delivery}</p>
     </div>
   );
 };
