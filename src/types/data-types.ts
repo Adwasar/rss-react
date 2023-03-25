@@ -7,3 +7,14 @@ export type CardItem = {
 export type NavTitle = {
   title: string;
 };
+
+export type FormState = {
+  inputName: string;
+  inputSurname: string;
+};
+
+export type InputChangeEvent = {
+  target: {
+    value: string;
+  };
+};
