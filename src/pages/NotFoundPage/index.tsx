@@ -1,6 +1,6 @@
-import { Header } from '../components/Header/Header';
+import { Header } from '../../components/Header/Header';
 
-import { NavTitle } from '../types/data-types';
+import { NavTitle } from '../../types/data-types';
 
 const NotFoundPage = (props: NavTitle) => {
   return (
