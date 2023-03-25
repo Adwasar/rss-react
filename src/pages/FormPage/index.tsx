@@ -14,4 +14,4 @@ const FormPage = (props: NavTitle) => {
   );
 };
 
-export default FormPage;
+export { FormPage };

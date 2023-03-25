@@ -1,6 +1,6 @@
 import styles from './FilterBoard.module.scss';
 
-const FilterBoard = () => {
+export const FilterBoard = () => {
   return (
     <div className={styles['filter-board']}>
       <div className="wrapper">
@@ -12,5 +12,3 @@ const FilterBoard = () => {
     </div>
   );
 };
-
-export default FilterBoard;

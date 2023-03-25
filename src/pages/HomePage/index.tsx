@@ -1,7 +1,8 @@
 import { Header } from '../../components/Header/Header';
 import { Card } from '../../components/Card';
+import { FilterBoard } from '../../components/FilterBoard';
+
 import data from '../../components/data';
-import FilterBoard from '../../components/FilterBoard';
 
 import { NavTitle } from '../../types/data-types';
 

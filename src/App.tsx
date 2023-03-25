@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
-import FormPage from './pages/FormPage';
+import { FormPage } from './pages/FormPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 import './App.scss';
