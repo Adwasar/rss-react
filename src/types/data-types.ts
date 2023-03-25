@@ -14,6 +14,7 @@ export type FormState = {
   inputDateOfBirth: string;
   inputRadioGender: string;
   selectDelivery: string;
+  selectedImg: string;
   cards: FormCard[] | [];
 };
 
@@ -23,6 +24,7 @@ export type FormCard = {
   dateOfBirth: string;
   gender: string;
   delivery: string;
+  avatar: string;
 };
 
 export type InputChangeEvent = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import styles from './FormPage.module.scss';
 
 import { Header } from '../../components/Header/Header';
@@ -13,8 +13,18 @@ class FormPage extends React.Component<NavTitle, FormState> {
     inputDateOfBirth: '',
     inputRadioGender: 'Prefer not sey',
     selectDelivery: 'Self',
+    selectedImg:
+      'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
     cards: [
-      { name: 'Vlad', surname: 'Bryl', dateOfBirth: '1996-03-16', gender: 'Mr', delivery: 'Self' },
+      {
+        name: 'Vlad',
+        surname: 'Bryl',
+        dateOfBirth: '1996-03-16',
+        gender: 'Mr',
+        delivery: 'Self',
+        avatar:
+          'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
+      },
     ],
   };
 
@@ -49,6 +59,21 @@ class FormPage extends React.Component<NavTitle, FormState> {
     });
   };
 
+  handleImgChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        if (typeof reader.result === 'string') {
+          this.setState({
+            selectedImg: reader.result,
+          });
+        }
+      };
+    }
+  };
+
   handleCreateAccount = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     this.setState((prevState) => ({
@@ -57,6 +82,8 @@ class FormPage extends React.Component<NavTitle, FormState> {
       inputDateOfBirth: '',
       inputRadioGender: 'Prefer not sey',
       selectDelivery: 'Self',
+      selectedImg:
+        'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
       cards: [
         ...prevState.cards,
         {
@@ -65,6 +92,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
           dateOfBirth: this.state.inputDateOfBirth,
           gender: this.state.inputRadioGender,
           delivery: this.state.selectDelivery,
+          avatar: this.state.selectedImg,
         },
       ],
     }));
@@ -158,6 +186,18 @@ class FormPage extends React.Component<NavTitle, FormState> {
               </select>
             </label>
 
+            <label htmlFor="img" className={styles['form-img']}>
+              Image:
+              <br />
+              <input
+                type="file"
+                id="img"
+                name="img"
+                accept="image/*"
+                onChange={this.handleImgChange}
+              />
+            </label>
+
             <button className={styles['submitBtn']} onClick={this.handleCreateAccount}>
               Create account
             </button>
@@ -172,6 +212,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
                 dateOfBirth={card.dateOfBirth}
                 gender={card.gender}
                 delivery={card.delivery}
+                avatar={card.avatar}
               />
             ))}
           </div>

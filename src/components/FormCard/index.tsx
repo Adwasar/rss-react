@@ -11,6 +11,7 @@ const FormCard = (props: FormCardType) => {
       <p>Date: {props.dateOfBirth}</p>
       <p>Gender: {props.gender}</p>
       <p>Shipping method: {props.delivery}</p>
+      <img className={styles.avatar} src={props.avatar} alt="avatar" />
     </div>
   );
 };
