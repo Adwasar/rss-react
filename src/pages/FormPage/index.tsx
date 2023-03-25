@@ -136,15 +136,17 @@ class FormPage extends React.Component<NavTitle, FormState> {
             </button>
           </form>
 
-          {this.state.cards.map((card, i) => (
-            <FormCard
-              key={i}
-              name={card.name}
-              surname={card.surname}
-              dateOfBirth={card.dateOfBirth}
-              gender={card.gender}
-            />
-          ))}
+          <div className={styles.cards}>
+            {this.state.cards.map((card, i) => (
+              <FormCard
+                key={i}
+                name={card.name}
+                surname={card.surname}
+                dateOfBirth={card.dateOfBirth}
+                gender={card.gender}
+              />
+            ))}
+          </div>
         </div>
       </>
     );
