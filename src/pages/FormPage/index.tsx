@@ -2,16 +2,16 @@ import { Header } from '../../components/Header/Header';
 
 import { NavTitle } from '../../types/data-types';
 
-const AboutPage = (props: NavTitle) => {
+const FormPage = (props: NavTitle) => {
   return (
     <>
       <Header title={props.title} />
       <div className="wrapper">
-        <h1>About us</h1>
-        <p>some content about us</p>
+        <h1>Form</h1>
+        <p>This will be form</p>
       </div>
     </>
   );
 };
 
-export { AboutPage };
+export default FormPage;

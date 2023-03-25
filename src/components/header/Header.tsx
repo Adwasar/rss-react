@@ -12,6 +12,7 @@ export const Header = (props: NavTitle) => {
           <nav className={styles.nav}>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About Us</NavLink>
+            <NavLink to="/form">Form</NavLink>
           </nav>
         </div>
       </div>

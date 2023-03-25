@@ -12,7 +12,7 @@ const HomePage = (props: NavTitle) => {
       <FilterBoard />
       <div className="wrapper">
         <div className="cards">
-          {data.map((item, i) => {
+          {data.map((_, i) => {
             return (
               <Card key={i} price={data[i].price} image={data[i].image} title={data[i].title} />
             );
