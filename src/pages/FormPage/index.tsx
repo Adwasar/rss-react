@@ -11,9 +11,10 @@ class FormPage extends React.Component<NavTitle, FormState> {
     inputName: '',
     inputSurname: '',
     inputDateOfBirth: '',
+    inputRadioGender: '',
     cards: [
-      { name: 'Vlad', surname: 'Bryl', dateOfBirth: '1996-03-16' },
-      { name: 'Artem', surname: 'Mahenko', dateOfBirth: '1993-12-10' },
+      { name: 'Vlad', surname: 'Bryl', dateOfBirth: '1996-03-16', gender: 'Mr' },
+      { name: 'Artem', surname: 'Mahenko', dateOfBirth: '1993-12-10', gender: 'Mr' },
     ],
   };
 
@@ -35,6 +36,13 @@ class FormPage extends React.Component<NavTitle, FormState> {
     });
   };
 
+  handleInputGenderChange: React.MouseEventHandler<HTMLInputElement> = (event) => {
+    const input = event.target as HTMLInputElement;
+    this.setState({
+      inputRadioGender: input.value,
+    });
+  };
+
   handleCreateAccount = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     this.setState(
@@ -42,12 +50,14 @@ class FormPage extends React.Component<NavTitle, FormState> {
         inputName: '',
         inputSurname: '',
         inputDateOfBirth: '',
+        inputRadioGender: '',
         cards: [
           ...prevState.cards,
           {
             name: this.state.inputName,
             surname: this.state.inputSurname,
             dateOfBirth: this.state.inputDateOfBirth,
+            gender: this.state.inputRadioGender,
           },
         ],
       }),
@@ -87,6 +97,40 @@ class FormPage extends React.Component<NavTitle, FormState> {
               onChange={this.handleInputDateOfBirthChange}
             />
 
+            <div>
+              Gender:
+              <label htmlFor="genderMr" className={styles['gender-radio']}>
+                <input
+                  id="genderMr"
+                  type="radio"
+                  name="gender"
+                  value={'Mr'}
+                  onClick={this.handleInputGenderChange}
+                />
+                {' Mr'}
+              </label>
+              <label htmlFor="genderMs" className={styles['gender-radio']}>
+                <input
+                  id="genderMs"
+                  type="radio"
+                  name="gender"
+                  value={'Ms'}
+                  onClick={this.handleInputGenderChange}
+                />
+                {' Ms'}
+              </label>
+              <label htmlFor="genderNo" className={styles['gender-radio']}>
+                <input
+                  id="genderNo"
+                  type="radio"
+                  name="gender"
+                  value={'Prefer not sey'}
+                  onClick={this.handleInputGenderChange}
+                />
+                {' Prefer not sey'}
+              </label>
+            </div>
+
             <button className={styles['submitBtn']} onClick={this.handleCreateAccount}>
               Create account
             </button>
@@ -98,6 +142,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
               name={card.name}
               surname={card.surname}
               dateOfBirth={card.dateOfBirth}
+              gender={card.gender}
             />
           ))}
         </div>

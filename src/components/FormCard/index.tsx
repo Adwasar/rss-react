@@ -9,6 +9,7 @@ const FormCard = (props: FormCardType) => {
       <p>Name: {props.name}</p>
       <p>Surname: {props.surname}</p>
       <p>Date: {props.dateOfBirth}</p>
+      <p>Gender: {props.gender}</p>
     </div>
   );
 };

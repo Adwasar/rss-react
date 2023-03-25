@@ -12,6 +12,7 @@ export type FormState = {
   inputName: string;
   inputSurname: string;
   inputDateOfBirth: string;
+  inputRadioGender: string;
   cards: FormCard[] | [];
 };
 
@@ -19,6 +20,7 @@ export type FormCard = {
   name: string;
   surname: string;
   dateOfBirth: string;
+  gender: string;
 };
 
 export type InputChangeEvent = {
