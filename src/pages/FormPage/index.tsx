@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import styles from './FormPage.module.scss';
 
-import { Header } from '../../components/Header/Header';
+import { Header } from '../../components/Header';
 import { FormCard } from '../../components/FormCard';
 
 import {

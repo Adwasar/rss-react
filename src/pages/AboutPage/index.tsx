@@ -1,4 +1,4 @@
-import { Header } from '../../components/Header/Header';
+import { Header } from '../../components/Header';
 
 import { NavTitle } from '../../types/data-types';
 

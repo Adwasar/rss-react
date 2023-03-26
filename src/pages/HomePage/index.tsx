@@ -1,4 +1,4 @@
-import { Header } from '../../components/Header/Header';
+import { Header } from '../../components/Header';
 import { Card } from '../../components/Card';
 import { FilterBoard } from '../../components/FilterBoard';
 
