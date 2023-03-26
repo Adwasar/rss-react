@@ -29,6 +29,10 @@ class FormPage extends React.Component<NavTitle, FormState> {
     ],
   };
 
+  showDoneMassage = () => {
+    alert('information saved');
+  };
+
   handleInputNameChange = ({ target: { value } }: InputChangeEvent) => {
     this.setState({
       inputName: value,
@@ -97,6 +101,8 @@ class FormPage extends React.Component<NavTitle, FormState> {
         },
       ],
     }));
+
+    this.showDoneMassage();
 
     const fileInput = this.fileInputRef.current as HTMLInputElement;
     if (fileInput.form) {
