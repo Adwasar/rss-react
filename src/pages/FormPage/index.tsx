@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import styles from './FormPage.module.scss';
 
 import { Header } from '../../components/Header/Header';
@@ -24,6 +24,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
     cards: [],
     inputNameError: '',
     inputSurnameError: '',
+    inputDateOfBirthError: '',
   };
 
   showDoneMassage = () => {
@@ -33,18 +34,23 @@ class FormPage extends React.Component<NavTitle, FormState> {
   validate = () => {
     let nameError = '';
     let surnameError = '';
+    let dateOfBirthError = '';
 
     if (!this.state.inputName) {
       nameError = 'Name not entered';
     }
     if (!this.state.inputSurname) {
-      surnameError = 'Surname error';
+      surnameError = 'Surname not entered';
+    }
+    if (!this.state.inputDateOfBirth) {
+      dateOfBirthError = 'Date of birth not entered';
     }
 
-    if (nameError || surnameError) {
+    if (nameError || surnameError || dateOfBirthError) {
       this.setState({
         inputNameError: nameError,
         inputSurnameError: surnameError,
+        inputDateOfBirthError: dateOfBirthError,
       });
       return false;
     }
@@ -175,14 +181,17 @@ class FormPage extends React.Component<NavTitle, FormState> {
               <p className={styles.error}>{this.state.inputSurnameError}</p>
             </div>
 
-            <label htmlFor="dateOfBirth">Date of birth:</label>
-            <input
-              type="date"
-              id="dateOfBirth"
-              className={styles['form-input']}
-              onChange={this.handleInputDateOfBirthChange}
-              value={this.state.inputDateOfBirth}
-            />
+            <div className={styles['form-input']}>
+              <label htmlFor="dateOfBirth">Date of birth:</label>
+              <br />
+              <input
+                type="date"
+                id="dateOfBirth"
+                onChange={this.handleInputDateOfBirthChange}
+                value={this.state.inputDateOfBirth}
+              />
+              <p className={styles.error}>{this.state.inputDateOfBirthError}</p>
+            </div>
 
             <div>
               Gender:

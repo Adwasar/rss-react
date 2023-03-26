@@ -18,6 +18,7 @@ export type FormState = {
   cards: FormCard[] | [];
   inputNameError: string;
   inputSurnameError: string;
+  inputDateOfBirthError: string;
 };
 
 export type FormCard = {
