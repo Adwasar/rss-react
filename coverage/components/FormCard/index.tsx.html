@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/Card/index.tsx</title>
+    <title>Code coverage report for components/FormCard/index.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Card</a> index.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/FormCard</a> index.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -82,53 +82,44 @@
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { CardItem } from '../../types/data-types';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FormCard as FormCardType } from '../../types/data-types';
 &nbsp;
-import styles from './Card.module.scss';
+import styles from './FormCard.module.scss';
 &nbsp;
-const Card = (props: CardItem) =&gt; {
+const FormCard = (props: FormCardType) =&gt; {
   return (
-    &lt;&gt;
-      &lt;div className={styles['card-wrapper']}&gt;
-        &lt;div
-          className={styles['card-image']}
-          style={{ backgroundImage: `url(${props.image})` }}
-        &gt;&lt;/div&gt;
-        &lt;p className={styles['card-title']}&gt;{props.title}&lt;/p&gt;
-        &lt;span className={styles['card-cost']}&gt;ЦЕНА:&lt;/span&gt;
-        &lt;br /&gt;
-        &lt;span className={styles['card-price']}&gt;{props.price} грн&lt;/span&gt;
-      &lt;/div&gt;
-    &lt;/&gt;
+    &lt;div className={styles['card-wrapper']}&gt;
+      &lt;h3&gt;FormCard&lt;/h3&gt;
+      &lt;p&gt;Name: {props.name}&lt;/p&gt;
+      &lt;p&gt;Surname: {props.surname}&lt;/p&gt;
+      &lt;p&gt;Date: {props.dateOfBirth}&lt;/p&gt;
+      &lt;p&gt;Gender: {props.gender}&lt;/p&gt;
+      &lt;p&gt;Shipping method: {props.delivery}&lt;/p&gt;
+      &lt;img className={styles.avatar} src={props.avatar} alt="avatar" /&gt;
+    &lt;/div&gt;
   );
 };
 &nbsp;
-export { Card };
+export { FormCard };
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
