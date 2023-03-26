@@ -36,6 +36,17 @@ class FormPage extends React.Component<NavTitle, FormState> {
     let surnameError = '';
     let dateOfBirthError = '';
 
+    function checkFirstLetter(str: string) {
+      const pattern = /^[A-Z]/;
+      return pattern.test(str);
+    }
+
+    if (!checkFirstLetter(this.state.inputName[0])) {
+      nameError = 'The first letter must be in uppercase';
+    }
+    if (!checkFirstLetter(this.state.inputSurname[0])) {
+      surnameError = 'The first letter must be in uppercase';
+    }
     if (!this.state.inputName) {
       nameError = 'Name not entered';
     }
@@ -43,9 +54,8 @@ class FormPage extends React.Component<NavTitle, FormState> {
       surnameError = 'Surname not entered';
     }
     if (!this.state.inputDateOfBirth) {
-      dateOfBirthError = 'Date of birth not entered';
+      dateOfBirthError = 'Date of birth not selected';
     }
-
     if (nameError || surnameError || dateOfBirthError) {
       this.setState({
         inputNameError: nameError,
@@ -109,7 +119,6 @@ class FormPage extends React.Component<NavTitle, FormState> {
 
     const isValid = this.validate();
     this.validate();
-    console.log(isValid);
 
     if (isValid) {
       this.setState((prevState) => ({
@@ -133,6 +142,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
         ],
         inputNameError: '',
         inputSurnameError: '',
+        inputDateOfBirthError: '',
       }));
 
       this.showDoneMassage();
@@ -194,7 +204,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
             </div>
 
             <div>
-              Gender:
+              {'Gender: (optional)'}
               <label className={styles['gender-radio']}>
                 <input
                   id="genderMr"
@@ -243,7 +253,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
             </label>
 
             <label htmlFor="img" className={styles['form-img']}>
-              Image:
+              {'Image: (optional)'}
               <br />
               <input
                 type="file"
