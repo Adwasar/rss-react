@@ -17,6 +17,7 @@ export type FormState = {
   selectedImg: string;
   cards: FormCard[] | [];
   inputNameError: string;
+  inputSurnameError: string;
 };
 
 export type FormCard = {

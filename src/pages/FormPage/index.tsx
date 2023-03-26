@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import styles from './FormPage.module.scss';
 
 import { Header } from '../../components/Header/Header';
@@ -23,6 +23,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
       'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
     cards: [],
     inputNameError: '',
+    inputSurnameError: '',
   };
 
   showDoneMassage = () => {
@@ -30,9 +31,20 @@ class FormPage extends React.Component<NavTitle, FormState> {
   };
 
   validate = () => {
+    let nameError = '';
+    let surnameError = '';
+
     if (!this.state.inputName) {
+      nameError = 'Name not entered';
+    }
+    if (!this.state.inputSurname) {
+      surnameError = 'Surname error';
+    }
+
+    if (nameError || surnameError) {
       this.setState({
-        inputNameError: 'Name not entered',
+        inputNameError: nameError,
+        inputSurnameError: surnameError,
       });
       return false;
     }
@@ -91,6 +103,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
 
     const isValid = this.validate();
     this.validate();
+    console.log(isValid);
 
     if (isValid) {
       this.setState((prevState) => ({
@@ -113,6 +126,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
           },
         ],
         inputNameError: '',
+        inputSurnameError: '',
       }));
 
       this.showDoneMassage();
@@ -158,6 +172,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
                 value={this.state.inputSurname}
                 onChange={this.handleInputSurnameChange}
               />
+              <p className={styles.error}>{this.state.inputSurnameError}</p>
             </div>
 
             <label htmlFor="dateOfBirth">Date of birth:</label>
