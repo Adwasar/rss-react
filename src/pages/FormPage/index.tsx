@@ -4,7 +4,12 @@ import styles from './FormPage.module.scss';
 import { Header } from '../../components/Header/Header';
 import { FormCard } from '../../components/FormCard';
 
-import { NavTitle, FormState, InputChangeEvent } from '../../types/data-types';
+import {
+  NavTitle,
+  FormState,
+  InputChangeEvent,
+  FormCard as FormCardType,
+} from '../../types/data-types';
 
 class FormPage extends React.Component<NavTitle, FormState> {
   fileInputRef = React.createRef();
@@ -16,17 +21,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
     selectDelivery: 'Self',
     selectedImg:
       'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
-    cards: [
-      {
-        name: 'Vlad',
-        surname: 'Bryl',
-        dateOfBirth: '1996-03-16',
-        gender: 'Mr',
-        delivery: 'Self',
-        avatar:
-          'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
-      },
-    ],
+    cards: [],
   };
 
   showDoneMassage = () => {
@@ -217,7 +212,7 @@ class FormPage extends React.Component<NavTitle, FormState> {
           </form>
 
           <div className={styles.cards}>
-            {this.state.cards.map((card, i) => (
+            {this.state.cards.map((card: FormCardType, i) => (
               <FormCard
                 key={i}
                 name={card.name}
