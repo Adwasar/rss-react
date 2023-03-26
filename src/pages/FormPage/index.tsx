@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useRef } from 'react';
 import styles from './FormPage.module.scss';
 
 import { Header } from '../../components/Header/Header';
@@ -22,10 +22,22 @@ class FormPage extends React.Component<NavTitle, FormState> {
     selectedImg:
       'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
     cards: [],
+    inputNameError: '',
   };
 
   showDoneMassage = () => {
     alert('information saved');
+  };
+
+  validate = () => {
+    if (!this.state.inputName) {
+      this.setState({
+        inputNameError: 'Name not entered',
+      });
+      return false;
+    }
+
+    return true;
   };
 
   handleInputNameChange = ({ target: { value } }: InputChangeEvent) => {
@@ -76,39 +88,46 @@ class FormPage extends React.Component<NavTitle, FormState> {
 
   handleCreateAccount = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    this.setState((prevState) => ({
-      inputName: '',
-      inputSurname: '',
-      inputDateOfBirth: '',
-      inputRadioGender: 'Prefer not sey',
-      selectDelivery: 'Self',
-      selectedImg:
-        'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
-      cards: [
-        ...prevState.cards,
-        {
-          name: this.state.inputName,
-          surname: this.state.inputSurname,
-          dateOfBirth: this.state.inputDateOfBirth,
-          gender: this.state.inputRadioGender,
-          delivery: this.state.selectDelivery,
-          avatar: this.state.selectedImg,
-        },
-      ],
-    }));
 
-    this.showDoneMassage();
+    const isValid = this.validate();
+    this.validate();
 
-    const fileInput = this.fileInputRef.current as HTMLInputElement;
-    if (fileInput.form) {
-      fileInput.form.reset();
+    if (isValid) {
+      this.setState((prevState) => ({
+        inputName: '',
+        inputSurname: '',
+        inputDateOfBirth: '',
+        inputRadioGender: 'Prefer not sey',
+        selectDelivery: 'Self',
+        selectedImg:
+          'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
+        cards: [
+          ...prevState.cards,
+          {
+            name: this.state.inputName,
+            surname: this.state.inputSurname,
+            dateOfBirth: this.state.inputDateOfBirth,
+            gender: this.state.inputRadioGender,
+            delivery: this.state.selectDelivery,
+            avatar: this.state.selectedImg,
+          },
+        ],
+        inputNameError: '',
+      }));
+
+      this.showDoneMassage();
+
+      const fileInput = this.fileInputRef.current as HTMLInputElement;
+      if (fileInput.form) {
+        fileInput.form.reset();
+      }
+
+      //сбрасываем значения радиокнопок:
+      const genderRadios = document.getElementsByName('gender') as NodeListOf<HTMLInputElement>;
+      genderRadios.forEach((radio) => {
+        radio.checked = false;
+      });
     }
-
-    //сбрасываем значения радиокнопок:
-    const genderRadios = document.getElementsByName('gender') as NodeListOf<HTMLInputElement>;
-    genderRadios.forEach((radio) => {
-      radio.checked = false;
-    });
   };
 
   render() {
@@ -118,22 +137,28 @@ class FormPage extends React.Component<NavTitle, FormState> {
         <div className="wrapper">
           <h1>Form</h1>
           <form className={styles.form}>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              value={this.state.inputName}
-              onChange={this.handleInputNameChange}
-              className={styles['form-input']}
-            />
-            <label htmlFor="surname">Surname:</label>
-            <input
-              type="text"
-              id="surname"
-              value={this.state.inputSurname}
-              onChange={this.handleInputSurnameChange}
-              className={styles['form-input']}
-            />
+            <div className={styles['form-input']}>
+              <label htmlFor="name">Name:</label>
+              <br />
+              <input
+                type="text"
+                id="name"
+                value={this.state.inputName}
+                onChange={this.handleInputNameChange}
+              />
+              <p className={styles.error}>{this.state.inputNameError}</p>
+            </div>
+
+            <div className={styles['form-input']}>
+              <label htmlFor="surname">Surname:</label>
+              <br />
+              <input
+                type="text"
+                id="surname"
+                value={this.state.inputSurname}
+                onChange={this.handleInputSurnameChange}
+              />
+            </div>
 
             <label htmlFor="dateOfBirth">Date of birth:</label>
             <input
