@@ -44,7 +44,12 @@ const FormPageFn = (props: NavTitle) => {
           <div className={styles['form-input']}>
             <label htmlFor="dateOfBirth">Date of birth:</label>
             <br />
-            <input type="date" id="dateOfBirth" />
+            <input
+              type="date"
+              id="dateOfBirth"
+              value={inputDateOfBirth}
+              onChange={(e) => setInputDateOfBirth(e.target.value)}
+            />
             <p className={styles.error}></p>
           </div>
 
