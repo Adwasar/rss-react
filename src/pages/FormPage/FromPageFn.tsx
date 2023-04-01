@@ -10,6 +10,18 @@ const FormPageFn = (props: NavTitle) => {
   const [inputName, setInputName] = useState('');
   const [inputSurname, setInputSurname] = useState('');
   const [inputDateOfBirth, setInputDateOfBirth] = useState('');
+  const [inputRadioGender, setInputRadioGender] = useState<string>('inputRadioGender');
+
+  function submitForm(event: React.FormEvent) {
+    event.preventDefault();
+
+    console.log({
+      inputName: inputName,
+      inputSurname: inputSurname,
+      inputDateOfBirth: inputDateOfBirth,
+      inputRadioGender: inputRadioGender,
+    });
+  }
 
   return (
     <>
@@ -56,15 +68,30 @@ const FormPageFn = (props: NavTitle) => {
           <div>
             {'Gender: (optional)'}
             <label className={styles['gender-radio']}>
-              <input type="radio" name="gender" value={'Mr'} />
+              <input
+                type="radio"
+                name="gender"
+                value={'Mr'}
+                onChange={() => setInputRadioGender('Mr')}
+              />
               {' Mr'}
             </label>
             <label className={styles['gender-radio']}>
-              <input type="radio" name="gender" value={'Ms'} />
+              <input
+                type="radio"
+                name="gender"
+                value={'Ms'}
+                onChange={() => setInputRadioGender('Ms')}
+              />
               {' Ms'}
             </label>
             <label className={styles['gender-radio']}>
-              <input type="radio" name="gender" value={'Prefer not sey'} />
+              <input
+                type="radio"
+                name="gender"
+                value={'Prefer not sey'}
+                onChange={() => setInputRadioGender('Prefer not sey')}
+              />
               {' Prefer not sey'}
             </label>
           </div>
@@ -85,7 +112,9 @@ const FormPageFn = (props: NavTitle) => {
             <input type="file" id="img" name="img" accept="image/*" />
           </label>
 
-          <button className={styles['submitBtn']}>Create account</button>
+          <button className={styles['submitBtn']} onClick={submitForm}>
+            Create account
+          </button>
         </form>
 
         <div className={styles.cards}></div>
