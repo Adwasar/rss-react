@@ -29,10 +29,6 @@ class FormPage extends React.Component<NavTitle, FormState> {
   inputNameRef = React.createRef();
   inputSurnameRef = React.createRef();
   inputDateOfBirthRef = React.createRef();
-  inputRadioGenderMrRef = React.createRef();
-  inputRadioGenderMsRef = React.createRef();
-  inputRadioGenderNoRef = React.createRef();
-  selectDeliveryRef = React.createRef<HTMLSelectElement>();
   fileInputRef = React.createRef();
 
   showDoneMassage = () => {
@@ -207,7 +203,6 @@ class FormPage extends React.Component<NavTitle, FormState> {
               {'Gender: (optional)'}
               <label className={styles['gender-radio']}>
                 <input
-                  ref={this.inputRadioGenderMrRef as React.RefObject<HTMLInputElement>}
                   type="radio"
                   name="gender"
                   value={'Mr'}
@@ -217,7 +212,6 @@ class FormPage extends React.Component<NavTitle, FormState> {
               </label>
               <label className={styles['gender-radio']}>
                 <input
-                  ref={this.inputRadioGenderMsRef as React.RefObject<HTMLInputElement>}
                   type="radio"
                   name="gender"
                   value={'Ms'}
@@ -227,7 +221,6 @@ class FormPage extends React.Component<NavTitle, FormState> {
               </label>
               <label className={styles['gender-radio']}>
                 <input
-                  ref={this.inputRadioGenderMsRef as React.RefObject<HTMLInputElement>}
                   type="radio"
                   name="gender"
                   value={'Prefer not sey'}
@@ -241,7 +234,6 @@ class FormPage extends React.Component<NavTitle, FormState> {
               Shipping method:
               <br />
               <select
-                ref={this.selectDeliveryRef}
                 value={this.state.selectDelivery}
                 name="select"
                 id="select"
@@ -257,7 +249,6 @@ class FormPage extends React.Component<NavTitle, FormState> {
               {'Image: (optional)'}
               <br />
               <input
-                ref={this.fileInputRef as React.RefObject<HTMLInputElement>}
                 type="file"
                 id="img"
                 name="img"
