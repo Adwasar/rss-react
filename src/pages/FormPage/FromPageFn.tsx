@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './FormPage.module.scss';
 
 import { Header } from '../../components/Header';
+import { FormCard } from '../../components/FormCard';
 
-import { NavTitle } from '../../types/data-types';
+import { NavTitle, FormCard as FormCardType } from '../../types/data-types';
 
 const FormPageFn = (props: NavTitle) => {
   const [inputName, setInputName] = useState('');
@@ -12,17 +13,28 @@ const FormPageFn = (props: NavTitle) => {
   const [inputDateOfBirth, setInputDateOfBirth] = useState('');
   const [inputRadioGender, setInputRadioGender] = useState('inputRadioGender');
   const [selectDelivery, setSelectDelivery] = useState('Self');
+  const [selectedImg, setSelectedImg] = useState(
+    'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png'
+  );
+  const [cards, setCards] = useState<FormCardType[]>([]);
+
+  useEffect(() => {
+    console.log(cards);
+  }, [cards]);
 
   function submitForm(event: React.FormEvent) {
     event.preventDefault();
 
-    console.log({
-      inputName: inputName,
-      inputSurname: inputSurname,
-      inputDateOfBirth: inputDateOfBirth,
-      inputRadioGender: inputRadioGender,
-      selectDelivery: selectDelivery,
-    });
+    const newCard = {
+      name: inputName,
+      surname: inputSurname,
+      dateOfBirth: inputDateOfBirth,
+      gender: inputRadioGender,
+      delivery: selectDelivery,
+      avatar: selectedImg,
+    };
+
+    setCards((prevCards) => [...prevCards, newCard]);
   }
 
   return (
@@ -116,7 +128,24 @@ const FormPageFn = (props: NavTitle) => {
           <label htmlFor="img" className={styles['form-img']}>
             {'Image: (optional)'}
             <br />
-            <input type="file" id="img" name="img" accept="image/*" />
+            <input
+              type="file"
+              id="img"
+              name="img"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onloadend = () => {
+                    if (typeof reader.result === 'string') {
+                      setSelectedImg(reader.result);
+                    }
+                  };
+                }
+              }}
+            />
           </label>
 
           <button className={styles['submitBtn']} onClick={submitForm}>
@@ -124,7 +153,19 @@ const FormPageFn = (props: NavTitle) => {
           </button>
         </form>
 
-        <div className={styles.cards}></div>
+        <div className={styles.cards}>
+          {cards.map((card: FormCardType, i) => (
+            <FormCard
+              key={i}
+              name={card.name}
+              surname={card.surname}
+              dateOfBirth={card.dateOfBirth}
+              gender={card.gender}
+              delivery={card.delivery}
+              avatar={card.avatar}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
