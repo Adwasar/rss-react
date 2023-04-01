@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import styles from './FormPage.module.scss';
 
 import { Header } from '../../components/Header';
@@ -5,6 +7,10 @@ import { Header } from '../../components/Header';
 import { NavTitle } from '../../types/data-types';
 
 const FormPageFn = (props: NavTitle) => {
+  const [inputName, setInputName] = useState('');
+  const [inputSurname, setInputSurname] = useState('');
+  const [inputDateOfBirth, setInputDateOfBirth] = useState('');
+
   return (
     <>
       <Header title={props.title} />
@@ -14,14 +20,24 @@ const FormPageFn = (props: NavTitle) => {
           <div className={styles['form-input']}>
             <label htmlFor="name">Name:</label>
             <br />
-            <input type="text" id="name" />
+            <input
+              type="text"
+              id="name"
+              value={inputName}
+              onChange={(e) => setInputName(e.target.value)}
+            />
             <p className={styles.error}></p>
           </div>
 
           <div className={styles['form-input']}>
             <label htmlFor="surname">Surname:</label>
             <br />
-            <input type="text" id="surname" />
+            <input
+              type="text"
+              id="surname"
+              value={inputSurname}
+              onChange={(e) => setInputSurname(e.target.value)}
+            />
             <p className={styles.error}></p>
           </div>
 
