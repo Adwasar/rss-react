@@ -10,7 +10,8 @@ const FormPageFn = (props: NavTitle) => {
   const [inputName, setInputName] = useState('');
   const [inputSurname, setInputSurname] = useState('');
   const [inputDateOfBirth, setInputDateOfBirth] = useState('');
-  const [inputRadioGender, setInputRadioGender] = useState<string>('inputRadioGender');
+  const [inputRadioGender, setInputRadioGender] = useState('inputRadioGender');
+  const [selectDelivery, setSelectDelivery] = useState('Self');
 
   function submitForm(event: React.FormEvent) {
     event.preventDefault();
@@ -20,6 +21,7 @@ const FormPageFn = (props: NavTitle) => {
       inputSurname: inputSurname,
       inputDateOfBirth: inputDateOfBirth,
       inputRadioGender: inputRadioGender,
+      selectDelivery: selectDelivery,
     });
   }
 
@@ -99,7 +101,12 @@ const FormPageFn = (props: NavTitle) => {
           <label htmlFor="select" className={styles['from-select']}>
             Shipping method:
             <br />
-            <select name="select" id="select">
+            <select
+              name="select"
+              id="select"
+              value={selectDelivery}
+              onChange={(e) => setSelectDelivery(e.target.value)}
+            >
               <option value="Self">Self delivery</option>
               <option value="Postal">Postal delivery</option>
               <option value="Courier">Courier delivery</option>
