@@ -13,7 +13,6 @@ export const Header = (props: NavTitle) => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About Us</NavLink>
             <NavLink to="/form">Form</NavLink>
-            <NavLink to="/formFn">FormFn</NavLink>
           </nav>
         </div>
       </div>

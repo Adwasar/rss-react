@@ -1,49 +1,29 @@
-import React, { ChangeEvent } from 'react';
+import React, { useState, useRef } from 'react';
+
 import styles from './FormPage.module.scss';
 
 import { Header } from '../../components/Header';
 import { FormCard } from '../../components/FormCard';
 
-import {
-  NavTitle,
-  FormState,
-  InputChangeEvent,
-  FormCard as FormCardType,
-} from '../../types/data-types';
+import { NavTitle, FormCard as FormCardType } from '../../types/data-types';
 
-class FormPage extends React.Component<NavTitle, FormState> {
-  state = {
-    inputName: '',
-    inputSurname: '',
-    inputDateOfBirth: '',
-    inputRadioGender: 'Prefer not sey',
-    selectDelivery: 'Self',
-    selectedImg:
-      'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
-    cards: [],
-    inputNameError: '',
-    inputSurnameError: '',
-    inputDateOfBirthError: '',
-  };
+const FormPage = (props: NavTitle) => {
+  const [inputName, setInputName] = useState('');
+  const [inputSurname, setInputSurname] = useState('');
+  const [inputDateOfBirth, setInputDateOfBirth] = useState('');
+  const [inputRadioGender, setInputRadioGender] = useState('Prefer not sey');
+  const [selectDelivery, setSelectDelivery] = useState('Self');
+  const [selectedImg, setSelectedImg] = useState(
+    'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png'
+  );
+  const [inputNameError, setInputNameError] = useState('');
+  const [inputSurnameError, setInputSurnameError] = useState('');
+  const [inputDateOfBirthError, setInputDateOfBirthError] = useState('');
+  const [cards, setCards] = useState<FormCardType[]>([]);
 
-  inputNameRef = React.createRef();
-  inputSurnameRef = React.createRef();
-  inputDateOfBirthRef = React.createRef();
-  fileInputRef = React.createRef();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  showDoneMassage = () => {
-    alert('information saved');
-  };
-
-  handleChange = () => {
-    this.setState({
-      inputName: (this.inputNameRef.current as HTMLInputElement).value,
-      inputSurname: (this.inputSurnameRef.current as HTMLInputElement).value,
-      inputDateOfBirth: (this.inputDateOfBirthRef.current as HTMLInputElement).value,
-    });
-  };
-
-  validate = () => {
+  function validate() {
     let nameError = '';
     let surnameError = '';
     let dateOfBirthError = '';
@@ -53,232 +33,205 @@ class FormPage extends React.Component<NavTitle, FormState> {
       return pattern.test(str);
     }
 
-    if (!checkFirstLetter(this.state.inputName[0])) {
+    if (!checkFirstLetter(inputName[0])) {
       nameError = 'The first letter must be in uppercase';
     }
-    if (!checkFirstLetter(this.state.inputSurname[0])) {
+    if (!checkFirstLetter(inputSurname[0])) {
       surnameError = 'The first letter must be in uppercase';
     }
-    if (!this.state.inputName) {
+    if (!inputName) {
       nameError = 'Name not entered';
     }
-    if (!this.state.inputSurname) {
+    if (!inputSurname) {
       surnameError = 'Surname not entered';
     }
-    if (!this.state.inputDateOfBirth) {
+    if (!inputDateOfBirth) {
       dateOfBirthError = 'Date of birth not selected';
     }
     if (nameError || surnameError || dateOfBirthError) {
-      this.setState({
-        inputNameError: nameError,
-        inputSurnameError: surnameError,
-        inputDateOfBirthError: dateOfBirthError,
-      });
+      setInputNameError(nameError);
+      setInputSurnameError(surnameError);
+      setInputDateOfBirthError(dateOfBirthError);
       return false;
     }
     return true;
-  };
-
-  handleInputGenderChange: React.MouseEventHandler<HTMLInputElement> = (event) => {
-    const input = event.target as HTMLInputElement;
-    this.setState({
-      inputRadioGender: input.value,
-    });
-  };
-
-  handleSelectShippingMethod = ({ target: { value } }: InputChangeEvent) => {
-    this.setState({
-      selectDelivery: value,
-    });
-  };
-
-  handleImgChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        if (typeof reader.result === 'string') {
-          this.setState({
-            selectedImg: reader.result,
-          });
-        }
-      };
-    }
-  };
-
-  handleCreateAccount = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    const isValid = this.validate();
-    this.validate();
-
-    if (isValid) {
-      this.setState((prevState) => ({
-        inputName: '',
-        inputSurname: '',
-        inputDateOfBirth: '',
-        inputRadioGender: 'Prefer not sey',
-        selectDelivery: 'Self',
-        selectedImg:
-          'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png',
-        cards: [
-          ...prevState.cards,
-          {
-            name: this.state.inputName,
-            surname: this.state.inputSurname,
-            dateOfBirth: this.state.inputDateOfBirth,
-            gender: this.state.inputRadioGender,
-            delivery: this.state.selectDelivery,
-            avatar: this.state.selectedImg,
-          },
-        ],
-        inputNameError: '',
-        inputSurnameError: '',
-        inputDateOfBirthError: '',
-      }));
-
-      this.showDoneMassage();
-
-      const fileInput = this.fileInputRef.current as HTMLInputElement;
-      if (fileInput.form) {
-        fileInput.form.reset();
-      }
-
-      //сбрасываем значения радиокнопок:
-      const genderRadios = document.getElementsByName('gender') as NodeListOf<HTMLInputElement>;
-      genderRadios.forEach((radio) => {
-        radio.checked = false;
-      });
-    }
-  };
-
-  render() {
-    return (
-      <>
-        <Header title={this.props.title} />
-        <div className="wrapper">
-          <h1>Form</h1>
-          <form className={styles.form}>
-            <div className={styles['form-input']}>
-              <label htmlFor="name">Name:</label>
-              <br />
-              <input
-                ref={this.inputNameRef as React.RefObject<HTMLInputElement>}
-                type="text"
-                id="name"
-                value={this.state.inputName}
-                onChange={this.handleChange}
-              />
-              <p className={styles.error}>{this.state.inputNameError}</p>
-            </div>
-
-            <div className={styles['form-input']}>
-              <label htmlFor="surname">Surname:</label>
-              <br />
-              <input
-                ref={this.inputSurnameRef as React.RefObject<HTMLInputElement>}
-                type="text"
-                id="surname"
-                value={this.state.inputSurname}
-                onChange={this.handleChange}
-              />
-              <p className={styles.error}>{this.state.inputSurnameError}</p>
-            </div>
-
-            <div className={styles['form-input']}>
-              <label htmlFor="dateOfBirth">Date of birth:</label>
-              <br />
-              <input
-                ref={this.inputDateOfBirthRef as React.RefObject<HTMLInputElement>}
-                type="date"
-                id="dateOfBirth"
-                onChange={this.handleChange}
-                value={this.state.inputDateOfBirth}
-              />
-              <p className={styles.error}>{this.state.inputDateOfBirthError}</p>
-            </div>
-
-            <div>
-              {'Gender: (optional)'}
-              <label className={styles['gender-radio']}>
-                <input
-                  type="radio"
-                  name="gender"
-                  value={'Mr'}
-                  onClick={this.handleInputGenderChange}
-                />
-                {' Mr'}
-              </label>
-              <label className={styles['gender-radio']}>
-                <input
-                  type="radio"
-                  name="gender"
-                  value={'Ms'}
-                  onClick={this.handleInputGenderChange}
-                />
-                {' Ms'}
-              </label>
-              <label className={styles['gender-radio']}>
-                <input
-                  type="radio"
-                  name="gender"
-                  value={'Prefer not sey'}
-                  onClick={this.handleInputGenderChange}
-                />
-                {' Prefer not sey'}
-              </label>
-            </div>
-
-            <label htmlFor="select" className={styles['from-select']}>
-              Shipping method:
-              <br />
-              <select
-                value={this.state.selectDelivery}
-                name="select"
-                id="select"
-                onChange={this.handleSelectShippingMethod}
-              >
-                <option value="Self">Self delivery</option>
-                <option value="Postal">Postal delivery</option>
-                <option value="Courier">Courier delivery</option>
-              </select>
-            </label>
-
-            <label htmlFor="img" className={styles['form-img']}>
-              {'Image: (optional)'}
-              <br />
-              <input
-                type="file"
-                id="img"
-                name="img"
-                accept="image/*"
-                onChange={this.handleImgChange}
-              />
-            </label>
-
-            <button className={styles['submitBtn']} onClick={this.handleCreateAccount}>
-              Create account
-            </button>
-          </form>
-
-          <div className={styles.cards}>
-            {this.state.cards.map((card: FormCardType, i) => (
-              <FormCard
-                key={i}
-                name={card.name}
-                surname={card.surname}
-                dateOfBirth={card.dateOfBirth}
-                gender={card.gender}
-                delivery={card.delivery}
-                avatar={card.avatar}
-              />
-            ))}
-          </div>
-        </div>
-      </>
-    );
   }
-}
+
+  function submitForm(event: React.FormEvent) {
+    event.preventDefault();
+
+    const newCard = {
+      name: inputName,
+      surname: inputSurname,
+      dateOfBirth: inputDateOfBirth,
+      gender: inputRadioGender,
+      delivery: selectDelivery,
+      avatar: selectedImg,
+    };
+
+    if (validate()) {
+      setCards((prevCards) => [...prevCards, newCard]);
+
+      resetInputs();
+
+      const genderRadios = document.querySelectorAll<HTMLInputElement>('[name="gender"]');
+      genderRadios.forEach((item) => {
+        item.checked = false;
+      });
+
+      if (fileInputRef?.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  }
+
+  function resetInputs() {
+    setInputName('');
+    setInputSurname('');
+    setInputDateOfBirth('');
+    setInputRadioGender('Prefer not sey');
+    setSelectDelivery('Self');
+    setSelectedImg(
+      'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png'
+    );
+    setInputNameError('');
+    setInputSurnameError('');
+    setInputDateOfBirthError('');
+  }
+
+  return (
+    <>
+      <Header title={props.title} />
+      <div className="wrapper">
+        <h1>Form</h1>
+        <form className={styles.form}>
+          <div className={styles['form-input']}>
+            <label htmlFor="name">Name:</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              value={inputName}
+              onChange={(e) => setInputName(e.target.value)}
+            />
+            <p className={styles.error}>{inputNameError}</p>
+          </div>
+
+          <div className={styles['form-input']}>
+            <label htmlFor="surname">Surname:</label>
+            <br />
+            <input
+              type="text"
+              id="surname"
+              value={inputSurname}
+              onChange={(e) => setInputSurname(e.target.value)}
+            />
+            <p className={styles.error}>{inputSurnameError}</p>
+          </div>
+
+          <div className={styles['form-input']}>
+            <label htmlFor="dateOfBirth">Date of birth:</label>
+            <br />
+            <input
+              type="date"
+              id="dateOfBirth"
+              value={inputDateOfBirth}
+              onChange={(e) => setInputDateOfBirth(e.target.value)}
+            />
+            <p className={styles.error}>{inputDateOfBirthError}</p>
+          </div>
+
+          <div>
+            {'Gender: (optional)'}
+            <label className={styles['gender-radio']}>
+              <input
+                type="radio"
+                name="gender"
+                value={'Mr'}
+                onChange={() => setInputRadioGender('Mr')}
+              />
+              {' Mr'}
+            </label>
+            <label className={styles['gender-radio']}>
+              <input
+                type="radio"
+                name="gender"
+                value={'Ms'}
+                onChange={() => setInputRadioGender('Ms')}
+              />
+              {' Ms'}
+            </label>
+            <label className={styles['gender-radio']}>
+              <input
+                type="radio"
+                name="gender"
+                value={'Prefer not sey'}
+                onChange={() => setInputRadioGender('Prefer not sey')}
+              />
+              {' Prefer not sey'}
+            </label>
+          </div>
+
+          <label htmlFor="select" className={styles['from-select']}>
+            Shipping method:
+            <br />
+            <select
+              name="select"
+              id="select"
+              value={selectDelivery}
+              onChange={(e) => setSelectDelivery(e.target.value)}
+            >
+              <option value="Self">Self delivery</option>
+              <option value="Postal">Postal delivery</option>
+              <option value="Courier">Courier delivery</option>
+            </select>
+          </label>
+
+          <label htmlFor="img" className={styles['form-img']}>
+            {'Image: (optional)'}
+            <br />
+            <input
+              type="file"
+              id="img"
+              name="img"
+              accept="image/*"
+              ref={fileInputRef}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onloadend = () => {
+                    if (typeof reader.result === 'string') {
+                      setSelectedImg(reader.result);
+                    }
+                  };
+                }
+              }}
+            />
+          </label>
+
+          <button className={styles['submitBtn']} onClick={submitForm}>
+            Create account
+          </button>
+        </form>
+
+        <div className={styles.cards}>
+          {cards.map((card: FormCardType, i) => (
+            <FormCard
+              key={i}
+              name={card.name}
+              surname={card.surname}
+              dateOfBirth={card.dateOfBirth}
+              gender={card.gender}
+              delivery={card.delivery}
+              avatar={card.avatar}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
 
 export { FormPage };
