@@ -16,9 +16,46 @@ const FormPageFn = (props: NavTitle) => {
   const [selectedImg, setSelectedImg] = useState(
     'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png'
   );
+  const [inputNameError, setInputNameError] = useState('');
+  const [inputSurnameError, setInputSurnameError] = useState('');
+  const [inputDateOfBirthError, setInputDateOfBirthError] = useState('');
   const [cards, setCards] = useState<FormCardType[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  function validate() {
+    let nameError = '';
+    let surnameError = '';
+    let dateOfBirthError = '';
+
+    function checkFirstLetter(str: string) {
+      const pattern = /^[A-Z]/;
+      return pattern.test(str);
+    }
+
+    if (!checkFirstLetter(inputName[0])) {
+      nameError = 'The first letter must be in uppercase';
+    }
+    if (!checkFirstLetter(inputSurname[0])) {
+      surnameError = 'The first letter must be in uppercase';
+    }
+    if (!inputName) {
+      nameError = 'Name not entered';
+    }
+    if (!inputSurname) {
+      surnameError = 'Surname not entered';
+    }
+    if (!inputDateOfBirth) {
+      dateOfBirthError = 'Date of birth not selected';
+    }
+    if (nameError || surnameError || dateOfBirthError) {
+      setInputNameError(nameError);
+      setInputSurnameError(surnameError);
+      setInputDateOfBirthError(dateOfBirthError);
+      return false;
+    }
+    return true;
+  }
 
   function submitForm(event: React.FormEvent) {
     event.preventDefault();
@@ -32,8 +69,23 @@ const FormPageFn = (props: NavTitle) => {
       avatar: selectedImg,
     };
 
-    setCards((prevCards) => [...prevCards, newCard]);
+    if (validate()) {
+      setCards((prevCards) => [...prevCards, newCard]);
 
+      resetInputs();
+
+      const genderRadios = document.querySelectorAll<HTMLInputElement>('[name="gender"]');
+      genderRadios.forEach((item) => {
+        item.checked = false;
+      });
+
+      if (fileInputRef?.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  }
+
+  function resetInputs() {
     setInputName('');
     setInputSurname('');
     setInputDateOfBirth('');
@@ -42,15 +94,9 @@ const FormPageFn = (props: NavTitle) => {
     setSelectedImg(
       'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png'
     );
-
-    const genderRadios = document.querySelectorAll<HTMLInputElement>('[name="gender"]');
-    genderRadios.forEach((item) => {
-      item.checked = false;
-    });
-
-    if (fileInputRef?.current) {
-      fileInputRef.current.value = '';
-    }
+    setInputNameError('');
+    setInputSurnameError('');
+    setInputDateOfBirthError('');
   }
 
   return (
@@ -68,7 +114,7 @@ const FormPageFn = (props: NavTitle) => {
               value={inputName}
               onChange={(e) => setInputName(e.target.value)}
             />
-            <p className={styles.error}></p>
+            <p className={styles.error}>{inputNameError}</p>
           </div>
 
           <div className={styles['form-input']}>
@@ -80,7 +126,7 @@ const FormPageFn = (props: NavTitle) => {
               value={inputSurname}
               onChange={(e) => setInputSurname(e.target.value)}
             />
-            <p className={styles.error}></p>
+            <p className={styles.error}>{inputSurnameError}</p>
           </div>
 
           <div className={styles['form-input']}>
@@ -92,7 +138,7 @@ const FormPageFn = (props: NavTitle) => {
               value={inputDateOfBirth}
               onChange={(e) => setInputDateOfBirth(e.target.value)}
             />
-            <p className={styles.error}></p>
+            <p className={styles.error}>{inputDateOfBirthError}</p>
           </div>
 
           <div>
