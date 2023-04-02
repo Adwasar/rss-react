@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import styles from './FormPage.module.scss';
 
@@ -11,16 +11,14 @@ const FormPageFn = (props: NavTitle) => {
   const [inputName, setInputName] = useState('');
   const [inputSurname, setInputSurname] = useState('');
   const [inputDateOfBirth, setInputDateOfBirth] = useState('');
-  const [inputRadioGender, setInputRadioGender] = useState('inputRadioGender');
+  const [inputRadioGender, setInputRadioGender] = useState('Prefer not sey');
   const [selectDelivery, setSelectDelivery] = useState('Self');
   const [selectedImg, setSelectedImg] = useState(
     'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png'
   );
   const [cards, setCards] = useState<FormCardType[]>([]);
 
-  useEffect(() => {
-    console.log(cards);
-  }, [cards]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   function submitForm(event: React.FormEvent) {
     event.preventDefault();
@@ -35,6 +33,24 @@ const FormPageFn = (props: NavTitle) => {
     };
 
     setCards((prevCards) => [...prevCards, newCard]);
+
+    setInputName('');
+    setInputSurname('');
+    setInputDateOfBirth('');
+    setInputRadioGender('Prefer not sey');
+    setSelectDelivery('Self');
+    setSelectedImg(
+      'https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png'
+    );
+
+    const genderRadios = document.querySelectorAll<HTMLInputElement>('[name="gender"]');
+    genderRadios.forEach((item) => {
+      item.checked = false;
+    });
+
+    if (fileInputRef?.current) {
+      fileInputRef.current.value = '';
+    }
   }
 
   return (
@@ -133,6 +149,7 @@ const FormPageFn = (props: NavTitle) => {
               id="img"
               name="img"
               accept="image/*"
+              ref={fileInputRef}
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) {
