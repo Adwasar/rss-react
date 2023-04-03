@@ -12,21 +12,20 @@
   height: 40px;
   width: 250px;
   border: 1px solid black;
+  overflow: hidden;
   border-radius: 5px;
 }
 
 .search-input {
   width: 100%;
+  padding: 0 10px;
   border: none;
-  border-radius: 5px;
   background-color: rgb(255, 255, 255); 
-
 }
 
 .search-btn {
   border: none;
   position: relative;
-  border-radius: 5px;
   background-color: rgb(255, 255, 255); 
 }
 
