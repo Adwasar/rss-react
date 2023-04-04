@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import styles from './FilterBoard.module.scss';
 
 export const FilterBoard = () => {
   const [inputFind, setInputFind] = useState('');
 
+  const handleInputFindChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputFind(e.target.value);
+    localStorage.setItem('inputFind', inputFind);
+  };
+
   const handleInputFindSubmit = () => {
     setInputFind('');
-    localStorage.setItem('inputFind', inputFind);
   };
 
   return (
@@ -16,8 +20,8 @@ export const FilterBoard = () => {
         <div className={styles['search-wrapper']}>
           <input
             className={styles['search-input']}
-            value={inputFind}
-            onChange={(e) => setInputFind(e.target.value)}
+            defaultValue={localStorage.getItem('inputFind') || ''}
+            onChange={handleInputFindChange}
             type="text"
           />
           <button className={styles['search-btn']} onClick={handleInputFindSubmit}>
