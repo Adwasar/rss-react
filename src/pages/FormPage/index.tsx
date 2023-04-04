@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useForm } from 'react-hook-form';
 
 import styles from './FormPage.module.scss';
 
@@ -8,6 +9,11 @@ import { FormCard } from '../../components/FormCard';
 import { NavTitle, FormCard as FormCardType } from '../../types/data-types';
 
 const FormPage = (props: NavTitle) => {
+  const {
+    formState: {},
+    handleSubmit,
+  } = useForm();
+
   const [inputName, setInputName] = useState('');
   const [inputSurname, setInputSurname] = useState('');
   const [inputDateOfBirth, setInputDateOfBirth] = useState('');
@@ -57,9 +63,7 @@ const FormPage = (props: NavTitle) => {
     return true;
   }
 
-  function submitForm(event: React.FormEvent) {
-    event.preventDefault();
-
+  function submitForm() {
     const newCard = {
       name: inputName,
       surname: inputSurname,
@@ -211,7 +215,7 @@ const FormPage = (props: NavTitle) => {
             />
           </label>
 
-          <button className={styles['submitBtn']} onClick={submitForm}>
+          <button className={styles['submitBtn']} onClick={handleSubmit(submitForm)}>
             Create account
           </button>
         </form>
