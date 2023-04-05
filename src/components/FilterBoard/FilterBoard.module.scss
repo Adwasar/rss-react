@@ -1,0 +1,35 @@
+.filter-board {
+  height: 80px;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper {
+  display: flex;
+  margin-left: auto;
+  background-color: rgb(255, 255, 255); 
+  height: 40px;
+  width: 250px;
+  border: 1px solid black;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0 10px;
+  border: none;
+  background-color: rgb(255, 255, 255); 
+}
+
+.search-btn {
+  border: none;
+  position: relative;
+  background-color: rgb(255, 255, 255); 
+}
+
+.test {
+  margin-top: 2px;
+  width: 22px;
+}
