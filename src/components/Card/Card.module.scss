@@ -13,17 +13,15 @@
     background-size: contain;
   }
 
-  .card-title {
-    margin-top: 5px;
-  }
+  .card-name {
+    padding: 15px;
+    font-size: 22px;
+    text-align: center;
+    }
 
   .card-cost {
     margin-top: 10px;
     color: grey;
     font-size: 12px;
-  }
-
-  .card-price {
-    font-weight: 700;
   }
 }

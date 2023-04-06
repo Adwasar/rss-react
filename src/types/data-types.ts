@@ -1,7 +1,40 @@
-export type CardItem = {
-  title: string;
-  price: number;
+export type Data = {
+  results: Results[];
+  info?: Info;
+};
+
+export type Info = {
+  count: number;
+  pages: number;
+  next: string;
+  prev: number;
+};
+
+export type Results = {
+  id: string;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
   image: string;
+  episode: string[];
+  url: string;
+  created: string;
+};
+
+export type CardItem = {
+  name: string;
+  image: string;
+  species?: string;
 };
 
 export type NavTitle = {
