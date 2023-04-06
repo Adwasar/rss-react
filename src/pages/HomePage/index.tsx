@@ -5,11 +5,14 @@ import { Data, NavTitle } from '../../types/data-types';
 import { Header } from '../../components/Header';
 import { Card } from '../../components/Card';
 import { FilterBoard } from '../../components/FilterBoard';
+import { ModalCard } from '../../components/ModalCard';
 
 const HomePage = (props: NavTitle) => {
   const [data, setData] = useState<Data>({
     results: [],
   });
+  const [modalCard, setModalCard] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(0);
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
@@ -17,6 +20,19 @@ const HomePage = (props: NavTitle) => {
       .then((data) => setData(data))
       .catch((error) => console.error(error));
   }, []);
+
+  const handleClickOnCard = (index: number) => {
+    setModalCard(true);
+    setSelectedCard(index);
+  };
+
+  const handleCloseModalCard = () => {
+    setModalCard(false);
+  };
+
+  const handleClickModalOutside = () => {
+    setModalCard(false);
+  };
 
   useEffect(() => {
     console.log(data.results);
@@ -35,11 +51,19 @@ const HomePage = (props: NavTitle) => {
                   key={data.results[i].id}
                   image={data.results[i].image}
                   name={data.results[i].name}
+                  clickOnCard={() => handleClickOnCard(i)}
                 />
               );
             })}
         </div>
       </div>
+      {modalCard && (
+        <ModalCard
+          closeModalCard={handleCloseModalCard}
+          clickModalOutside={handleClickModalOutside}
+          image={data.results[selectedCard].image}
+        />
+      )}
     </>
   );
 };

@@ -35,6 +35,13 @@ export type CardItem = {
   name: string;
   image: string;
   species?: string;
+  clickOnCard: () => void;
+};
+
+export type CardModal = {
+  closeModalCard: () => void;
+  clickModalOutside: () => void;
+  image: string;
 };
 
 export type NavTitle = {
