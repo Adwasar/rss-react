@@ -62,6 +62,12 @@ const HomePage = (props: NavTitle) => {
           closeModalCard={handleCloseModalCard}
           clickModalOutside={handleClickModalOutside}
           image={data.results[selectedCard].image}
+          name={data.results[selectedCard].name}
+          species={data.results[selectedCard].species}
+          status={data.results[selectedCard].status}
+          location={data.results[selectedCard].location.name}
+          origin={data.results[selectedCard].origin.name}
+          gender={data.results[selectedCard].gender}
         />
       )}
     </>

@@ -42,6 +42,12 @@ export type CardModal = {
   closeModalCard: () => void;
   clickModalOutside: () => void;
   image: string;
+  name: string;
+  species: string;
+  status: string;
+  location: string;
+  origin: string;
+  gender: string;
 };
 
 export type NavTitle = {
