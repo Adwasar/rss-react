@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import { Data } from '../../types/data-types';
+
 import styles from './FilterBoard.module.scss';
 
-export const FilterBoard = () => {
+export const FilterBoard = (props: { onFilterResult: (value: Data) => void }) => {
   const [inputFind, setInputFind] = useState('');
 
   useEffect(() => {
@@ -11,6 +13,13 @@ export const FilterBoard = () => {
       setInputFind(savedValue);
     }
   }, []);
+
+  useEffect(() => {
+    fetch(`https://rickandmortyapi.com/api/character/?name=${inputFind}`)
+      .then((response) => response.json())
+      .then((data) => props.onFilterResult(data))
+      .catch((error) => console.error(error));
+  }, [inputFind, props]);
 
   const handleInputFindChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputFind(e.target.value);

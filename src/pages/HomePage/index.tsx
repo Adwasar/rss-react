@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Data, NavTitle, SelectedCardModal } from '../../types/data-types';
+import { Data, NavTitle, SelectedCardModal, Results } from '../../types/data-types';
 
 import { Header } from '../../components/Header';
 import { Card } from '../../components/Card';
@@ -13,6 +13,7 @@ const HomePage = (props: NavTitle) => {
   });
   const [modalCard, setModalCard] = useState(false);
   const [selectedCard, setSelectedApiCard] = useState<SelectedCardModal | null>(null);
+  const [filterResult, setFilterResult] = useState(data);
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
@@ -21,9 +22,13 @@ const HomePage = (props: NavTitle) => {
       .catch((error) => console.error(error));
   }, []);
 
-  const handleClickOnCard = (index: number) => {
+  const handleFilterResult = (value: Data) => {
+    setFilterResult(value);
+  };
+
+  const handleClickOnCard = (id: number) => {
     setModalCard(true);
-    fetch(`https://rickandmortyapi.com/api/character/${index + 1}`)
+    fetch(`https://rickandmortyapi.com/api/character/${id}`)
       .then((response) => response.json())
       .then((data) => setSelectedApiCard(data))
       .catch((error) => console.error(error));
@@ -33,24 +38,20 @@ const HomePage = (props: NavTitle) => {
     setModalCard(false);
   };
 
-  useEffect(() => {
-    console.log(selectedCard);
-  }, [selectedCard]);
-
   return (
     <>
       <Header title={props.title} />
-      <FilterBoard />
+      <FilterBoard onFilterResult={handleFilterResult} />
       <div className="wrapper">
         <div className="cards">
-          {data.results &&
-            data.results.map((_, i) => {
+          {filterResult.results &&
+            filterResult.results.map((card: Results, i) => {
               return (
                 <Card
-                  key={data.results[i].id}
-                  image={data.results[i].image}
-                  name={data.results[i].name}
-                  clickOnCard={() => handleClickOnCard(i)}
+                  key={filterResult.results[i].id}
+                  image={filterResult.results[i].image}
+                  name={filterResult.results[i].name}
+                  clickOnCard={() => handleClickOnCard(card.id)}
                 />
               );
             })}

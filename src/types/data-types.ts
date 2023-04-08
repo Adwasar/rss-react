@@ -11,7 +11,7 @@ export type Info = {
 };
 
 export type Results = {
-  id: string;
+  id: number;
   name: string;
   status: string;
   species: string;
@@ -36,6 +36,10 @@ export type CardItem = {
   image: string;
   species?: string;
   clickOnCard: () => void;
+};
+
+export type FilterBoard = {
+  onFilterResult: () => void;
 };
 
 export type CardModal = {
