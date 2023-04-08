@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Data, NavTitle } from '../../types/data-types';
+import { Data, NavTitle, SelectedCardModal } from '../../types/data-types';
 
 import { Header } from '../../components/Header';
 import { Card } from '../../components/Card';
@@ -12,7 +12,7 @@ const HomePage = (props: NavTitle) => {
     results: [],
   });
   const [modalCard, setModalCard] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(0);
+  const [selectedCard, setSelectedApiCard] = useState<SelectedCardModal | null>(null);
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
@@ -23,20 +23,19 @@ const HomePage = (props: NavTitle) => {
 
   const handleClickOnCard = (index: number) => {
     setModalCard(true);
-    setSelectedCard(index);
+    fetch(`https://rickandmortyapi.com/api/character/${index + 1}`)
+      .then((response) => response.json())
+      .then((data) => setSelectedApiCard(data))
+      .catch((error) => console.error(error));
   };
 
   const handleCloseModalCard = () => {
     setModalCard(false);
   };
 
-  const handleClickModalOutside = () => {
-    setModalCard(false);
-  };
-
   useEffect(() => {
-    console.log(data.results);
-  }, [data]);
+    console.log(selectedCard);
+  }, [selectedCard]);
 
   return (
     <>
@@ -57,17 +56,16 @@ const HomePage = (props: NavTitle) => {
             })}
         </div>
       </div>
-      {modalCard && (
+      {modalCard && selectedCard !== null && (
         <ModalCard
           closeModalCard={handleCloseModalCard}
-          clickModalOutside={handleClickModalOutside}
-          image={data.results[selectedCard].image}
-          name={data.results[selectedCard].name}
-          species={data.results[selectedCard].species}
-          status={data.results[selectedCard].status}
-          location={data.results[selectedCard].location.name}
-          origin={data.results[selectedCard].origin.name}
-          gender={data.results[selectedCard].gender}
+          image={selectedCard.image}
+          name={selectedCard.name}
+          species={selectedCard.species}
+          status={selectedCard.status}
+          gender={selectedCard?.gender}
+          location={selectedCard?.location?.name}
+          origin={selectedCard?.origin?.name}
         />
       )}
     </>

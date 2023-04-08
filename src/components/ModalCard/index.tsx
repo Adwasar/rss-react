@@ -16,7 +16,7 @@ export const ModalCard = (props: CardModal) => {
   }, [props.status]);
 
   return (
-    <div className={styles['over-modal']} onClick={props.clickModalOutside}>
+    <div className={styles['over-modal']} onClick={props.closeModalCard}>
       <div className={styles['modal-wrapper']} onClick={(e) => e.stopPropagation()}>
         <img className={styles['modal-img']} src={props.image} alt="character" />
         <div className={styles['modal-info']}>
