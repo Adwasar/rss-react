@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './FilterBoard.module.scss';
 
 export const FilterBoard = () => {
   const [inputFind, setInputFind] = useState('');
 
+  useEffect(() => {
+    const savedValue = localStorage.getItem('currentInputFindValue');
+    if (savedValue) {
+      setInputFind(savedValue);
+    }
+  }, []);
+
   const handleInputFindChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputFind(e.target.value);
-    localStorage.setItem('inputFind', inputFind);
+    localStorage.setItem('currentInputFindValue', e.target.value);
   };
 
   const handleInputFindSubmit = () => {
+    localStorage.setItem('currentInputFindValue', '');
+    localStorage.setItem('submitedInputFindValue', inputFind);
     setInputFind('');
   };
 
@@ -20,7 +29,7 @@ export const FilterBoard = () => {
         <div className={styles['search-wrapper']}>
           <input
             className={styles['search-input']}
-            defaultValue={localStorage.getItem('inputFind') || ''}
+            value={inputFind}
             onChange={handleInputFindChange}
             type="text"
           />
