@@ -19,7 +19,9 @@ export const FilterBoard = (props: { onFilterResult: (value: Data) => void }) =>
       .then((response) => response.json())
       .then((data) => props.onFilterResult(data))
       .catch((error) => console.error(error));
-  }, [inputFind, props]);
+    console.log('get request');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputFind]);
 
   const handleInputFindChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputFind(e.target.value);
