@@ -25,8 +25,8 @@ export const FilterBoard = (props: { onFilterResult: (value: Data) => void }) =>
         .then((data) => props.onFilterResult(data))
         .catch((error) => console.error(error))
         .finally(() => setIsLoading(false));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, 200);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputFind]);
 
   const handleInputFindChange = (e: React.ChangeEvent<HTMLInputElement>) => {
