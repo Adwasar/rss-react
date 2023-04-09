@@ -7,45 +7,73 @@ import { AboutPage } from './pages/AboutPage';
 
 const data = [
   {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 6499,
+    name: 'Мужские Кроссовки Nike Blazer Mid Suede',
     image: './img/sneakers/1.png',
   },
   {
-    title: 'Мужские Кроссовки Nike Air Max 270',
-    price: 6499,
+    name: 'Мужские Кроссовки Nike Air Max 270',
     image: './img/sneakers/2.png',
   },
   {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 4199,
+    name: 'Мужские Кроссовки Nike Blazer Mid Suede',
     image: './img/sneakers/3.png',
   },
   {
-    title: 'Кроссовки Puma X Aka Boku Future Rider',
-    price: 4599,
+    name: 'Кроссовки Puma X Aka Boku Future Rider',
     image: './img/sneakers/4.png',
   },
 ];
 
 describe('Cards components', () => {
   it('List renders', () => {
-    render(<Card price={data[0].price} image={data[0].image} title={data[0].title} />);
+    render(
+      <Card
+        image={data[0].image}
+        name={data[0].name}
+        clickOnCard={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    );
     expect(screen.getByText(/кроссовки/i)).toBeInTheDocument();
   });
 
   it('List renders', () => {
-    render(<Card price={data[1].price} image={data[1].image} title={data[1].title} />);
+    render(
+      <Card
+        image={data[1].image}
+        name={data[1].name}
+        clickOnCard={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    );
     expect(screen.getByText(/кроссовки/i)).toBeInTheDocument();
   });
 
   it('List renders', () => {
-    render(<Card price={data[2].price} image={data[2].image} title={data[2].title} />);
+    render(
+      <Card
+        image={data[2].image}
+        name={data[2].name}
+        clickOnCard={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    );
     expect(screen.getByText(/кроссовки/i)).toBeInTheDocument();
   });
 
   it('List renders', () => {
-    render(<Card price={data[3].price} image={data[3].image} title={data[3].title} />);
+    render(
+      <Card
+        image={data[3].image}
+        name={data[3].name}
+        clickOnCard={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    );
     expect(screen.getByText(/кроссовки/i)).toBeInTheDocument();
   });
 });
