@@ -6,6 +6,7 @@ import { Header } from '../../components/Header';
 import { Card } from '../../components/Card';
 import { FilterBoard } from '../../components/FilterBoard';
 import { ModalCard } from '../../components/ModalCard';
+import { Loader } from '../../components/Loader';
 
 const HomePage = (props: NavTitle) => {
   const [data, setData] = useState<Data>({
@@ -14,6 +15,7 @@ const HomePage = (props: NavTitle) => {
   const [modalCard, setModalCard] = useState(false);
   const [selectedCard, setSelectedApiCard] = useState<SelectedCardModal | null>(null);
   const [filterResult, setFilterResult] = useState(data);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
@@ -28,14 +30,19 @@ const HomePage = (props: NavTitle) => {
 
   const handleClickOnCard = (id: number) => {
     setModalCard(true);
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((response) => response.json())
-      .then((data) => setSelectedApiCard(data))
-      .catch((error) => console.error(error));
+    setIsLoading(true);
+    setTimeout(() => {
+      fetch(`https://rickandmortyapi.com/api/character/${id}`)
+        .then((response) => response.json())
+        .then((data) => setSelectedApiCard(data))
+        .catch((error) => console.error(error))
+        .finally(() => setIsLoading(false));
+    }, 300);
   };
 
   const handleCloseModalCard = () => {
     setModalCard(false);
+    setSelectedApiCard(null);
   };
 
   return (
@@ -69,6 +76,7 @@ const HomePage = (props: NavTitle) => {
           origin={selectedCard?.origin?.name}
         />
       )}
+      {isLoading && <Loader />}
     </>
   );
 };

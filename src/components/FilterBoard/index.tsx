@@ -19,7 +19,6 @@ export const FilterBoard = (props: { onFilterResult: (value: Data) => void }) =>
       .then((response) => response.json())
       .then((data) => props.onFilterResult(data))
       .catch((error) => console.error(error));
-    console.log('get request');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputFind]);
 
