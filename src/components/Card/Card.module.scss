@@ -1,0 +1,35 @@
+.card-wrapper {
+  position: relative;
+  margin: 15px;
+  padding: 7px;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 200px;
+  height: 285px;
+  box-shadow: 1px 1px 10px 1px rgba($color: #000000, $alpha: 0.2);
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 1px 11px 10px 1px rgba($color: #000000, $alpha: 0.2);
+  }
+
+  .card-image {
+    margin: 0 auto;
+    height: 200px;
+    background-size: contain;
+  }
+  
+  .card-name {
+    padding: 15px;
+    font-size: 22px;
+    text-align: center;
+  }
+  
+  .card-cost {
+    margin-top: 10px;
+    color: grey;
+    font-size: 12px;
+  }
+}

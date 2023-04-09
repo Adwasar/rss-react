@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #fcfced;
+}
+
+.active {
+  text-decoration: underline !important;
+}
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.cards {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
